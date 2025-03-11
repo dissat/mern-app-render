@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import PropTypes from "prop-types";
 
-const Record = (props) => {
+const Employee = (props) => {
     return (
         <tr>
-            <td>{props.record.name}</td>
-            <td>{props.record.position}</td>
-            <td>{props.record.level}</td>
+            <td>{props.employee.name}</td>
+            <td>{props.employee.position}</td>
+            <td>{props.employee.level}</td>
             <td>
-                <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
+                <Link className="btn btn-link" to={`/edit/${props.employee._id}`}>Edit</Link> |
                 <button
                     className="btn btn-link"
                     onClick={() => {
-                        props.deleteRecord(props.record._id)
+                        props.deleteEmployee(props.employee._id)
                     }}
                 >
                     Delete
@@ -22,12 +23,23 @@ const Record = (props) => {
     )
 }
 
+//Expected Props per Employee
+Employee.propTypes = {
+    employee:PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        position: PropTypes.string.isRequired,
+        level: PropTypes.string.isRequired,
+    }).isRequired,
+    deleteEmployee: PropTypes.func.isRequired
+};
+
 export default function RecordList() {
-    const [records, setRecords] = useState([])
+    const [employees, setEmployees] = useState([])
 
     useEffect(() => {
-        async function getRecords() {
-            const response = await fetch(`${process.env.REACT_APP_YOUR_HOSTNAME}/record/`)
+        async function getEmployees() {
+            const response = await fetch(`${process.env.MERN_APP}/employee/`)
 
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`
@@ -35,36 +47,36 @@ export default function RecordList() {
                 return
             }
 
-            const records = await response.json()
-            setRecords(records)
+            const employees = await response.json()
+            setEmployees(employees)
         }
 
-        getRecords()
+        getEmployees()
 
         return
-    }, [records.length])
+    }, [])
 
-    async function deleteRecord(id) {
+    async function deleteEmployee(id) {
         const result = window.confirm("Will this employee be removed from the list?")
         if (!result) {
             return
         }
 
-        await fetch(`${process.env.REACT_APP_YOUR_HOSTNAME}/${id}`, {
+        await fetch(`${process.env.MERN_APP}/${id}`, {
             method: "DELETE"
         })
 
-        const newRecords = records.filter((record) => record._id !== id)
-        setRecords(newRecords)
+        const newEmployees = employees.filter((employee) => employee._id !== id)
+        setEmployees(newEmployees)
     }
 
     function recordList() {
-        return records.map((record) => {
+        return employees.map((employee) => {
             return (
-                <Record
-                    key={record._id}
-                    record={record}
-                    deleteRecord={() => deleteRecord(record._id)}
+                <Employee
+                    key={employee._id}
+                    employee={employee}
+                    deleteEmployee={() => deleteEmployee(employee._id)}
                 />
             )
         })

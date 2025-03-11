@@ -5,13 +5,15 @@ const client = new MongoClient(Db, {
     useUnifiedTopology: true
 })
 
-var _db
+let _db
+let _collection
 
 module.exports = {
     connectToMongoDB: async function (callback) {
         try {
             await client.connect()
-            _db = client.db("employees")
+            _db = client.db("Employee")
+            _collection = _db.collection("employees")
             console.log("Successfully connected to MongoDB.")
             
             return callback(null)
