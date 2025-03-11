@@ -13,21 +13,21 @@ export default function Edit() {
     useEffect(() => {
         async function fetchData() {
             const id = params.id
-            const response = await fetch(`${process.env.REACT_APP_MERN_APP}/record/${id}`)
+            const response = await fetch(`${process.env.REACT_APP_MERN_APP}/employee/${id}`)
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`
                 window.alert(message)
                 return
             }
 
-            const record = await response.json()
-            if (!record) {
-                window.alert(`Record with id ${id} not found`)
+            const employee = await response.json()
+            if (!employee) {
+                window.alert(`Employee with id ${id} not found`)
                 navigate("/")
                 return
             }
 
-            setForm(record)
+            setForm(employee)
         }
 
         fetchData()
@@ -46,7 +46,7 @@ export default function Edit() {
 
         const editedPerson = { ...form }
         const response = await fetch(`${process.env.REACT_APP_MERN_APP}/update/${params.id}`, {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -64,7 +64,7 @@ export default function Edit() {
 
     return (
         <div>
-            <h3>Update Record</h3>
+            <h3>Update Employee</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
@@ -127,7 +127,7 @@ export default function Edit() {
                 <div className="form-group">
                     <input
                         type="submit"
-                        value="Update Record"
+                        value="Update Employee"
                         className="btn btn-primary"
                     />
                 </div>

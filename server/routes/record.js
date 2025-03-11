@@ -15,7 +15,7 @@ recordRoutes.route("/employee").get(async function (req, res) {
 })
 
 // This section will help you get a single record by id
-recordRoutes.route("/employee/:id").get(async function (req, res) {
+recordRoutes.route("/update/:id").get(async function (req, res) {
     const db_connect = dbo.getDb()
     const myquery = { _id: new ObjectId(req.params.id) }
     try {

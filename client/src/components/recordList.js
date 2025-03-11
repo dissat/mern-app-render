@@ -62,7 +62,7 @@ export default function RecordList() {
             return
         }
 
-        await fetch(`${process.env.REACT_APP_MERN_APP}/${id}`, {
+        await fetch(`${process.env.REACT_APP_MERN_APP}/employee/${id}`, {
             method: "DELETE"
         })
 

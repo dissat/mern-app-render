@@ -19,7 +19,7 @@ export default function Create() {
         e.preventDefault()
 
         const newPerson = { ...form }
-        const response = await fetch(`${process.env.REACT_APP_MERN_APP}/record/add`, {
+        const response = await fetch(`${process.env.REACT_APP_MERN_APP}/employee/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -39,7 +39,7 @@ export default function Create() {
 
     return (
         <div>
-            <h3>Create New Record</h3>
+            <h3>Create New Employee</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
