@@ -39,7 +39,7 @@ export default function RecordList() {
 
     useEffect(() => {
         async function getEmployees() {
-            const response = await fetch(`${process.env.MERN_APP}/employee/`)
+            const response = await fetch(`${process.env.REACT_APP_MERN_APP}/employee/`)
 
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`
@@ -62,7 +62,7 @@ export default function RecordList() {
             return
         }
 
-        await fetch(`${process.env.MERN_APP}/${id}`, {
+        await fetch(`${process.env.REACT_APP_MERN_APP}/${id}`, {
             method: "DELETE"
         })
 
