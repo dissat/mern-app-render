@@ -1,0 +1,53 @@
+[
+    {
+      "name": "Max Müller",
+      "position": "Softwareentwickler",
+      "level": "Junior"
+    },
+    {
+      "name": "Erika Schmidt",
+      "position": "Projektmanagerin",
+      "level": "Senior"
+    },
+    {
+      "name": "Hans Schneider",
+      "position": "QA-Ingenieur",
+      "level": "Mid-Level"
+    },
+    {
+      "name": "Anna Fischer",
+      "position": "UX/UI-Designerin",
+      "level": "Junior"
+    },
+    {
+      "name": "Peter Weber",
+      "position": "Datenanalyst",
+      "level": "Senior"
+    },
+    {
+      "name": "Laura Meyer",
+      "position": "Systemadministratorin",
+      "level": "Mid-Level"
+    },
+    {
+      "name": "Tom Wagner",
+      "position": "DevOps-Ingenieur",
+      "level": "Junior"
+    },
+    {
+      "name": "Julia Becker",
+      "position": "Produktmanagerin",
+      "level": "Senior"
+    },
+    {
+      "name": "Michael Schäfer",
+      "position": "Netzwerkspezialist",
+      "level": "Mid-Level"
+    },
+    {
+      "name": "Sophie Schulz",
+      "position": "IT-Support-Spezialistin",
+      "level": "Junior"
+    }
+  ]
+  
