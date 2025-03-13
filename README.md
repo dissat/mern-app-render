@@ -34,7 +34,8 @@ Create an hostname on server enviroment variable in `client/.env` with your host
 ```
 REACT_APP_MERN_APP=http://localhost:5000"
 ```
-Create in main folder a .env for mongodb credentials
+Create a `.env`file in main folder for mongodb credentials
+
 
 Install dependencies
 
