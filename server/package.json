@@ -5,17 +5,16 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "audit": "npm audit",
-    "setup": "npm install && npm run build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "dev": "nodemon server.js",
+    "build": "webpack --config webpack.config.js",
+    "test": "mocha test/**/*.test.js",
+    "lint": "eslint .",
+    "prestart": "npm run lint && npm run test",
+    "predev": "npm run lint && npm run test",
+    "postinstall": "npm run build",
+    "setup": "npm install && npm run build",
+    "deploy": "npm run build && pm2 restart server",
+    "watch": "webpack --watch"
   },
   "keywords": [],
   "author": "Tin Doan",
@@ -26,5 +25,11 @@
     "express": "^4.21.2",
     "mongodb": "^5.9.2",
     "server": "file:"
+  },
+  "devDependencies": {
+    "eslint": "9.22.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-react": "2.7.0",
+    "nodemon": "3.1.9"
   }
 }

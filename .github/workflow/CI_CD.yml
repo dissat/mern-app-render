@@ -84,6 +84,8 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Deploy to Render
-        run: |
-          curl -fsSL https://render.com/deploy | bash
-          # Deployment steps specific to your Render deployment process can be added here
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
+          wait-for-success: true
